@@ -1,6 +1,61 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  p Candy Store
+  header.row.header
+    h1 WDI Shop
+  section#cart.row
+    .col-md-12
+  section.row.create
+    .col-md-2.createProduct
+      button.btn.btn-success(type='button') Create
+    .col-md-2.col-md-offset-8.calc
+      button.btn.btn-info(type='button') Calculate
+  section.row.total
+    h1
+      | Total:
+      br
+      |  $
+      span#grandTotal 00.00
+
+  #editform.modal.fade(tabindex='-1', role='dialog')
+    .modal-dialog(role='document')
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4.modal-title Update Candy
+        .modal-body
+          .form-group
+            label(for='name') Name
+            input#name.form-control(type='text', placeholder='Name')
+          .form-group
+            label(for='color') Color
+            input#color.form-control(type='text', placeholder='Color')
+          .form-group
+            label(for='price') Price
+            input#price.form-control(type='number', placeholder='Price')
+            input#id.form-control(type='hidden')
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+          button.btn.btn-primary.submit(type='button') Save changes
+
+  script#productRowTpl(type='text/template').
+    <div class="row product" data-id="{{Id}}">
+    <div class="col-md-2 title">{{Name}}</div>
+    <div class="col-md-2 color">{{Color}}</div>
+    <div class="col-md-2 price">${{Price}}</div>
+    <div class="col-md-2 qtr">
+      <input type="number" name="quantity" min="0" max="50" value="0"/>
+    </div>
+    <div class="col-md-2 subtotal">$0.00</div>
+    <div class="col-md-1 delete">
+      <button type="button" class="btn btn-danger">Delete</button>
+    </div>
+    <div class="col-md-1 update">
+      <button type="button" class="btn btn-info">Update</button>
+    </div>
+    </div>
+
+
+block scripts
+  script(src='/javascripts/main.js')

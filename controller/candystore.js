@@ -1,70 +1,74 @@
-/* eslint semi: ["error", "never"] */
+/* eslint semi: ["error", "never"], undef: ["error"] */
 const uuidV4 = require('uuid/v4')
-const store = []
-const storeInfo = [
-  { id: 1, name: 'Chewing Gum', color: 'Red' },
-  { id: 2, name: 'Pez', color: 'Green' },
-  { id: 3, name: 'Marshmallow', color: 'Pink' },
-  { id: 4, name: 'Cola', color: 'Brown' }
+
+const storeDefault = [
+  { id: '1', name: 'Chewing Gum', color: 'Red', price: 12 },
+  { id: '2', name: 'Pez', color: 'Green', price: 10 },
+  { id: 3, name: 'Marshmallow', color: 'Pink', price: 8 },
+  { id: 4, name: 'Candy Stick', color: 'Blue', price: 6 }
 ]
 
-// Helper functions
-const getID = (id) => {
-  const candy = store.filter((candy) => {
-    let getCandy
-    if (candy.id === parseInt(id, 10)) {
-      getCandy = candy
-    }
-    return getCandy
-  })
-  return candy
-}
+const store = []
 
-// Generate seed candies
-const init = (storeInfo) => {
-  storeInfo.forEach((candy) => {
+const init = () => {
+  storeDefault.forEach((candy) => {
     candy.id = uuidV4()
     store.push(candy)
   })
 }
+init()
 
-// Init store
-init(storeInfo)
-
-// routes
+/*
+ *  Return all the candy
+ */
 exports.list = () => store
 
-// create candy
+/*
+ *  Create candy ( Crud )
+ */
 exports.create = (candy) => {
   candy.id = uuidV4()
   store.push(candy)
   return candy
 }
 
-// get candy
+/*
+ *  Get candy ( cRud )
+ */
 exports.get = (id) => {
-  const candy = getID(id)
-  return candy
+  const candy = store.filter(candy => candy.id === id)
+
+  // Check function for more than 1 candy with the same id
+  // Write the error to the log
+
+  return candy[0] // What bug could be here ?
 }
 
-// update candy
+/*
+ *  Update candy ( crUd )
+ */
 exports.update = (newCandy) => {
   store.forEach((candy, index) => {
     if (candy.id === newCandy.id) {
       store[index] = newCandy
     }
   })
+
   return newCandy
 }
 
-// delete candy
+/*
+ *  Delete candy ( cruD )
+ */
 exports.delete = (id) => {
   let deleted = false
+
   store.forEach((candy, index) => {
-    if (candy.id === parseInt(id, 10)) {
+    if (candy.id === id) {
       store.splice(index, 1)
       deleted = true
     }
   })
+
   return deleted
 }

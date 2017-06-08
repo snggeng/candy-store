@@ -1,1 +1,73 @@
-body{padding:50px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif}a{color:#00B7FF}
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.cart {
+  border-top: 1px solid #EEEEEE;
+}
+
+
+
+.product {
+  margin-top:20px;
+  height: 50px;
+  margin-bottom: 20px;
+  line-height: 50px;
+}
+
+.product:hover {
+  background-color: #EEEEEE;
+}
+
+.product input {
+  height: 40px;
+  width: 100px;
+}
+
+.product .delete, .product .update {
+  display: none;
+}
+
+.product:hover .delete, .product:hover .update {
+  display: block;
+}
+
+
+
+.create {
+  margin-top:20px;
+  height: 50px;
+  margin-bottom: 20px;
+  line-height: 50px;
+  border-top: 1px solid #EEEEEE;
+}
+
+.create input {
+  height: 40px;
+  width: 100px;
+}
+
+.total {
+  border-top: 1px solid #EEEEEE;
+}
+
+
+.row.create > div {
+  height: 50px;
+}
+
+
+.create .name, .create .price {
+  position: relative;
+}
+
+.create .name .form-group, .create .price .form-group {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  margin-top: -20px;
+}
