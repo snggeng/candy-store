@@ -32,5 +32,16 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-mocha": "^4.8.0",
     "eslint-plugin-react": "^6.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snggeng/candy-store.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snggeng/candy-store/issues"
+  },
+  "homepage": "https://github.com/snggeng/candy-store#readme",
+  "description": ""
 }

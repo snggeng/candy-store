@@ -34,6 +34,7 @@
     "space-before-function-paren": [2, "never"],
     "space-in-parens": 0,
     "padded-blocks": 0,
-    "case-sensitive": 0
+    "case-sensitive": 0,
+    "undef": 2
   }
 }

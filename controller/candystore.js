@@ -1,4 +1,5 @@
-/* eslint semi: ["error", "never"], undef: ["error"] */
+/* eslint semi: ["error", "never"] */
+
 const uuidV4 = require('uuid/v4')
 
 const storeDefault = [

@@ -1,5 +1,4 @@
 /* eslint semi: ["error", "never"], no-undef: ["error"] */
-/* global $*/
 
 import express from 'express'
 import candyController from '../controller/candystore'
